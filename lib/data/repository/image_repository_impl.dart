@@ -1,9 +1,12 @@
+import 'package:app_gallery_tmt/gen/assets.gen.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_repository_impl.freezed.dart';
 
 class ImageRepositoryImpl {
-  final List<ImageModel> images = [];
+  final List<ImageModel> images = [
+    ImageModel(path: Assets.images.imgSaoKe.path),
+  ];
   final List<AlbumModel> albums = [
     AlbumModel(id: 1, name: 'Team Building 2022'),
     AlbumModel(id: 2, name: 'Team Building 2020'),
@@ -11,6 +14,7 @@ class ImageRepositoryImpl {
     AlbumModel(id: 4, name: 'Tại Diệp Minh Châu'),
     AlbumModel(id: 4, name: 'Ảnh siêu lầy lội'),
     AlbumModel(id: 5, name: 'Giải đá banh 2022'),
+    AlbumModel(id: 5, name: 'Quá khứ', tag: 'history'),
   ];
 
   Future<List<AlbumModel>> getAlbums() async {
