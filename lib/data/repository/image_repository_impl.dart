@@ -14,7 +14,7 @@ class ImageRepositoryImpl {
     AlbumModel(id: 5, name: 'Giải đá banh 2022'),
   ];
 
-  Future<List<AlbumModel>> getAlbums() async {
+  List<AlbumModel> getAlbums() {
     return albums.toList();
   }
 
