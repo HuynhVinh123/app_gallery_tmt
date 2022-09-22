@@ -68,14 +68,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
-    - assets/app/
-    - assets/delivery/
-    - assets/delivery/horizontal/
-    - assets/football/
-  # To add assets to your application, add an assets section, like this:
-  assets:
     - assets/images/test/
+    - assets/
+    - assets/images/
+  # To add assets to your application, add an assets section, like this:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,61 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_showcase_nullsafety/flutter_showcase.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-class ShowcaseWeatherTimeline extends StatelessWidget {
+import '../../category/category_page.dart';
+
+class WeatherTimelineApp extends StatefulWidget {
+  const WeatherTimelineApp({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return Showcase(
-      title: 'Weather Timeline',
-      app: _WeatherTimelineApp(),
-      description: 'Keep it up with the weather with this shining timeline.',
-      template: SimpleTemplate(reverse: false),
-      theme: TemplateThemeData(
-        frameTheme: FrameThemeData(
-          statusBarBrightness: Brightness.dark,
-          frameColor: Colors.white.withOpacity(0.7),
-        ),
-        flutterLogoColor: FlutterLogoColor.white,
-        brightness: Brightness.dark,
-        backgroundColor: const Color(0xFFDB84B1),
-        titleTextStyle: GoogleFonts.lato(
-          fontSize: 60,
-          fontWeight: FontWeight.w900,
-          color: Colors.white.withOpacity(0.7),
-        ),
-        descriptionTextStyle: GoogleFonts.lato(
-          fontSize: 24,
-          height: 1.2,
-          color: Colors.white.withOpacity(0.7),
-        ),
-        buttonTextStyle: TextStyle(
-          color: Colors.white.withOpacity(0.7),
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2,
-        ),
-        buttonIconTheme: const IconThemeData(color: Colors.white),
-        buttonTheme: ButtonThemeData(
-          buttonColor: const Color(0xFF9E3773),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          padding: const EdgeInsets.all(16),
-        ),
-      ),
-    );
-  }
+  State<WeatherTimelineApp> createState() => _WeatherTimelineAppState();
 }
 
-class _WeatherTimelineApp extends StatelessWidget {
+class _WeatherTimelineAppState extends State<WeatherTimelineApp>
+    with SingleTickerProviderStateMixin {
+  late AnimationController expandController;
+
+  @override
+  void initState() {
+    super.initState();
+    expandController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500));
+    expandController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Weather TimelineTile',
-      builder: Frame.builder,
-      home: _WeatherTimeline(),
+      // builder: Frame.builder,
+      home: FadeTransition(
+        opacity: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(expandController),
+        child: _WeatherTimeline(),
+      ),
     );
   }
 }
@@ -81,17 +62,20 @@ class _WeatherTimeline extends StatelessWidget {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
+            extendBodyBehindAppBar: false,
             appBar: _buildAppBar(),
             body: ListView(
               children: <Widget>[
+                const SizedBox(
+                  height: 12,
+                ),
                 TimelineTile(
                   alignment: TimelineAlign.manual,
                   lineXY: 0.3,
                   isFirst: true,
                   indicatorStyle: IndicatorStyle(
-                    width: 70,
-                    height: 70,
+                    width: 92,
+                    height: 92,
                     indicator: _Sun(),
                   ),
                   beforeLineStyle: LineStyle(
@@ -101,7 +85,7 @@ class _WeatherTimeline extends StatelessWidget {
                 ),
                 _buildTimelineTile(
                   indicator: const _IconIndicator(
-                    iconData: WeatherIcons.cloudy,
+                    iconData: WeatherIcons.stars,
                     size: 20,
                   ),
                   hour: '2011',
@@ -109,39 +93,58 @@ class _WeatherTimeline extends StatelessWidget {
                   temperature: '',
                   phrase:
                       'Bắt đầu từ 2011, TMT hoạt động theo hình thức sử dụng công nghệ để giải quyết khó khăn của từng khách hàng.',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CategoryPage(),
+                      ),
+                    );
+                  },
+                  paddingTop: 10,
                 ),
                 _buildTimelineTile(
                   indicator: const _IconIndicator(
-                    iconData: WeatherIcons.night_alt_rain_mix,
+                    iconData: WeatherIcons.moon_alt_new,
                     size: 20,
                   ),
                   hour: '2018',
                   weather: 'Phát triển phần mềm quản lý bán hàng',
                   temperature: '',
-                  phrase: '',
+                  phrase:
+                      'Nắm bắt được nhu cầu bán hàng online ngày càng phát triển. '
+                      'TMT bắt đầu phát triển 1 phần mềm để hỗ trợ chốt đơn nhanh chóng cho khách hàng.',
+                  onPressed: () {},
+                  paddingTop: 28,
                 ),
                 _buildTimelineTile(
                   indicator: const _IconIndicator(
-                    iconData: WeatherIcons.sunset,
+                    iconData: WeatherIcons.barometer,
                     size: 20,
                   ),
                   hour: '2019',
                   weather: 'Phát triển đa lĩnh vực phần mềm',
                   temperature: '',
                   phrase:
-                      'Cuối năm 2018, với tâm nguyện “Kiến tạo thành công” TMT bắt đầu áp dụng những kinh nghiệm trong phát triển đa lĩnh vực phần mềm mang lại giải pháp tối ưu cho nhà bán hàng.',
+                      'Với tâm nguyện “Kiến tạo thành công” TMT bắt đầu áp dụng những kinh nghiệm trong phát triển đa lĩnh vực phần mềm mang lại giải pháp tối ưu cho nhà bán hàng.',
+                  onPressed: () {},
+                  paddingTop: 32,
                 ),
                 _buildTimelineTile(
                   indicator: const _IconIndicator(
-                    iconData: WeatherIcons.night_alt_rain_mix,
+                    iconData: WeatherIcons.day_fog,
                     size: 20,
                   ),
-                  hour: '2021',
+                  hour: '2020',
                   weather:
                       'Bứt phá vượt trội với nhiều sản phẩm công nghệ và đạt giải Sao Khuê',
                   temperature: '',
                   phrase:
                       'Các sản phẩm của TMT được vinh danh nhận giải Sao Khuê 2021 và được giới công nghệ, báo chí truyền thông (HTV7 công nghệ thời đại 4.0, Vnexpress, Genk, Dantri,...)',
+                  onPressed: () {},
+                  paddingTop: 40,
+                ),
+                const SizedBox(
+                  height: 12,
                 ),
               ],
             ),
@@ -154,13 +157,14 @@ class _WeatherTimeline extends StatelessWidget {
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       elevation: 0,
+      centerTitle: true,
       backgroundColor: Colors.transparent,
       title: Text(
         'Happy Birthday TMT',
         style: GoogleFonts.jua(
           color: const Color(0xFF8e0000),
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          fontSize: 24,
         ),
       ),
     );
@@ -172,6 +176,8 @@ class _WeatherTimeline extends StatelessWidget {
     required String weather,
     required String temperature,
     required String phrase,
+    required VoidCallback onPressed,
+    required double paddingTop,
     bool isLast = false,
   }) {
     return TimelineTile(
@@ -187,53 +193,46 @@ class _WeatherTimeline extends StatelessWidget {
       ),
       isLast: isLast,
       startChild: Container(
-        alignment: const Alignment(0.0, -0.50),
+        alignment: const Alignment(0.0, -0.45),
         child: Text(
           hour,
-          style: GoogleFonts.lato(
-            fontSize: 18,
+          style: GoogleFonts.abhayaLibre(
+            fontSize: 24,
             color: Colors.white.withOpacity(0.6),
             fontWeight: FontWeight.w800,
           ),
         ),
       ),
-      endChild: Padding(
-        padding: const EdgeInsets.only(
-          left: 16,
-          right: 10,
-          top: 10,
-          bottom: 10,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              weather,
-              style: GoogleFonts.lato(
-                fontSize: 16,
-                color: Colors.white.withOpacity(0.8),
-                fontWeight: FontWeight.w600,
+      endChild: GestureDetector(
+        onTap: onPressed,
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 10,
+            top: paddingTop,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                weather,
+                style: GoogleFonts.aleo(
+                  fontSize: 16,
+                  color: Colors.white.withOpacity(0.8),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              temperature,
-              style: GoogleFonts.lato(
-                fontSize: 16,
-                color: Colors.white.withOpacity(0.8),
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              phrase,
-              style: GoogleFonts.lato(
-                fontSize: 14,
-                color: Colors.white.withOpacity(0.6),
-                fontWeight: FontWeight.normal,
-              ),
-            )
-          ],
+              const SizedBox(height: 4),
+              Text(
+                phrase,
+                style: GoogleFonts.abhayaLibre(
+                  fontSize: 15,
+                  color: Colors.white.withOpacity(0.6),
+                  fontWeight: FontWeight.normal,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -285,15 +284,19 @@ class _ContainerHeader extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(minHeight: 120),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
+          top: 12,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Text(
               '24.09.2011-24.09.2022',
-              style: GoogleFonts.jua(
-                fontSize: 18,
+              style: GoogleFonts.abhayaLibre(
+                fontSize: 19,
                 color: Colors.white.withOpacity(0.8),
                 fontWeight: FontWeight.w800,
               ),
@@ -302,9 +305,9 @@ class _ContainerHeader extends StatelessWidget {
               '11 tuổi',
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.right,
-              style: GoogleFonts.jua(
-                fontSize: 18,
-                color: const Color(0xFF4A448F).withOpacity(0.8),
+              style: GoogleFonts.aleo(
+                fontSize: 22,
+                color: const Color(0xFFffc750).withOpacity(0.8),
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -326,6 +329,7 @@ class _Sun extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 16),
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -338,7 +342,7 @@ class _Sun extends StatelessWidget {
         color: Colors.white,
       ),
       child: const CircleAvatar(
-        backgroundImage: AssetImage('assets/app/img.png'),
+        backgroundImage: AssetImage('assets/images/img.jpeg'),
       ),
     );
   }
