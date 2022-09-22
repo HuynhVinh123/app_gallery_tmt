@@ -4,6 +4,7 @@ part 'image_repository_impl.freezed.dart';
 
 class ImageRepositoryImpl {
   final List<ImageModel> images = [];
+
   final List<AlbumModel> albums = [
     AlbumModel(id: 1, name: 'Team Building 2022'),
     AlbumModel(id: 2, name: 'Team Building 2020'),
