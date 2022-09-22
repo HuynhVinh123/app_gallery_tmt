@@ -29,47 +29,59 @@ class _TmtAlbumPageState extends State<TmtAlbumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.redAccent,
       appBar: _buildAppBar(),
       body: _buildBody(),
     );
   }
 
   AppBar _buildAppBar() => AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.redAccent,
         title: Text(
           'TMT-Albums',
           style: GoogleFonts.jua(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
       );
 
   Widget _buildBody() {
-    return GridView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 10,
+      ),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
         ),
-        shrinkWrap: true,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                crossAxisCount: 2,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                height: 220),
-        itemCount: _albums.length,
-        itemBuilder: (BuildContext ctx, index) {
-          return Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(15)),
-            child: _Item(
-              albumModel: _albums[index],
-            ),
-          );
-        });
+      ),
+      child: GridView.builder(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 16,
+          ),
+          shrinkWrap: true,
+          gridDelegate:
+              const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  height: 220),
+          itemCount: _albums.length,
+          itemBuilder: (BuildContext ctx, index) {
+            return Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              child: _Item(
+                albumModel: _albums[index],
+              ),
+            );
+          }),
+    );
   }
 }
 

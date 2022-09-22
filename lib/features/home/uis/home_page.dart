@@ -41,6 +41,7 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
 
   Widget _buildNavigationBar() {
     return BottomNavigationBar(
+      currentIndex: _positionTab,
       selectedItemColor: const Color(0xFFf44336),
       unselectedItemColor: Colors.grey,
       items: const <BottomNavigationBarItem>[
@@ -82,6 +83,14 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
             end: 1.0,
           ).animate(expandController),
           child: const TmtAlbumPage(),
+        );
+      case 2:
+        return FadeTransition(
+          opacity: Tween<double>(
+            begin: 0.0,
+            end: 1.0,
+          ).animate(expandController),
+          child: const CategoryPage(),
         );
     }
     return const SizedBox();
