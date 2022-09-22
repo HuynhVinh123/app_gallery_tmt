@@ -1,5 +1,6 @@
 import 'package:app_gallery_tmt/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../models/image_details.dart';
 import '../media_detail/media_detail_page.dart';
@@ -135,86 +136,111 @@ List<ImageDetails> _images = [
   ),
 ];
 
-class CategoryPage extends StatelessWidget {
-  const CategoryPage({Key? key}) : super(key: key);
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key, this.title = 'Gallery'}) : super(key: key);
 
+  final String title;
+
+  @override
+  State<CategoryPage> createState() => _CategoryPageState();
+}
+
+class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.redAccent,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          const SizedBox(
-            height: 40,
-          ),
-          const Text(
-            'Gallery',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+      appBar: _buildAppbar(),
+      body: _buildBody(),
+    );
+  }
+
+  PreferredSizeWidget _buildAppbar() {
+    return AppBar(
+      backgroundColor: Colors.redAccent,
+      title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.w600,fontSize: 24),),
+      centerTitle: true,
+      elevation: 0,
+    );
+  }
+
+  Widget _buildBody() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        const SizedBox(
+          height: 10,
+        ),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 6,
+              vertical: 10,
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 30,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
               ),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-                itemBuilder: (context, index) {
-                  return RawMaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MediaDetailPage(
-                            imagePath: _images[index].imagePath,
-                            title: _images[index].title,
-                            photographer: _images[index].photographer,
-                            price: _images[index].price,
-                            details: _images[index].details,
-                            index: index,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Hero(
-                      tag: 'logo$index',
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: AssetImage(_images[index].imagePath),
-                            fit: BoxFit.cover,
-                          ),
+            ),
+            child: MasonryGridView.count(
+              physics: const ClampingScrollPhysics(),
+              itemCount: _images.length,
+              crossAxisCount: 2,
+              mainAxisSpacing: 4,
+              crossAxisSpacing: 4,
+              itemBuilder: (context, index) {
+                return RawMaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MediaDetailPage(
+                          imagePath: _images[index].imagePath,
+                          title: _images[index].title,
+                          photographer: _images[index].photographer,
+                          price: _images[index].price,
+                          details: _images[index].details,
+                          index: index,
                         ),
                       ),
+                    );
+                  },
+                  child: Hero(
+                    tag: 'logo$index',
+                    child: _ImageViewer(
+                      url: _images[index].imagePath,
                     ),
-                  );
-                },
-                itemCount: _images.length,
-              ),
+                  ),
+                );
+              },
             ),
-          )
-        ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _ImageViewer extends StatelessWidget {
+  const _ImageViewer({Key? key, required this.url}) : super(key: key);
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      child: Image.asset(
+        url,
+        fit: BoxFit.cover,
+        errorBuilder: (context, object, stack) {
+          return Image.asset(
+            'assets/images/no_image.png',
+            fit: BoxFit.cover,
+          );
+        },
       ),
     );
   }
