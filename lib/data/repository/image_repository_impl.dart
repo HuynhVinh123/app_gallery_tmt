@@ -94,6 +94,125 @@ class ImageRepositoryImpl {
         path: "assets/images/history/a20160716_165709.jpg", tag: 'history'),
     ImageModel(
         path: "assets/images/history/a20160716_184043.jpg", tag: 'history'),
+    ImageModel(path: "assets/images/soccer2022/1.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/IMGa5605.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5035.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5053.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5063.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5065.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5067.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5068.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5069.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5071.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5072.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5080.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5082.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5083.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5085.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5086.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5088.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5090.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5091.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5092.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5093.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5097.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5101.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5102.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5107.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5109.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5112.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5114.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5122.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5124.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5125.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5129.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5131.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5137.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5143.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5146.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5147.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5151.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5155.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5159.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5163.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5166.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5171.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5174.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5176.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5181.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5183.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5189.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5192.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5193.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5196.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5202.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5204.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5206.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5208.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5213.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5214.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5215.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5217.CR2.jpg", tag: 'soccer2022'),
+    ImageModel(
+        path: "assets/images/soccer2022/aMG_5223.CR2.jpg", tag: 'soccer2022'),
   ];
   final List<AlbumModel> albums = [
     AlbumModel(id: 1, name: 'Team Building 2022'),
@@ -101,7 +220,7 @@ class ImageRepositoryImpl {
     AlbumModel(id: 3, name: 'Ở CN1'),
     AlbumModel(id: 4, name: 'Tại Diệp Minh Châu'),
     AlbumModel(id: 4, name: 'Ảnh siêu lầy lội'),
-    AlbumModel(id: 5, name: 'Giải đá banh 2022'),
+    AlbumModel(id: 5, name: 'Giải đá banh 2022', tag: 'soccer2022'),
     AlbumModel(id: 5, name: 'Quá khứ', tag: 'history'),
   ];
 
