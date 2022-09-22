@@ -114,8 +114,16 @@ class ImageRepositoryImpl {
   }
 
   Future<AlbumModel> getAlbumById(int id) async {
-    return albums.firstWhere(
+    final ab = albums.firstWhere(
       (element) => element.id == id,
+    );
+
+    return ab.copyWith(
+      images: images
+          .where(
+            (element) => element.tag.contains(ab.tag),
+          )
+          .toList(),
     );
   }
 }

@@ -22,8 +22,8 @@ class _TmtAlbumPageState extends State<TmtAlbumPage> {
     _initData();
   }
 
-  void _initData() {
-    _albums = _repository.getAlbums();
+  void _initData() async {
+    _albums = await _repository.getAlbums();
   }
 
   @override
