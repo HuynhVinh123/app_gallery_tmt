@@ -135,6 +135,17 @@ List<ImageDetails> _images = [
   ),
 ];
 
+List<ImageDetails> _2020images = [
+  ImageDetails(
+    imagePath: Assets.images.test.a1.path,
+    price: '\$20.00',
+    photographer: 'Huu Duong',
+    title: 'New Year',
+    details:
+        'This image was taken during a party in New York on new years eve. Quite a colorful shot.',
+  ),
+];
+
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
 

@@ -4,6 +4,7 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 import '../../category/category_page.dart';
+import '../../tmt_album/tmt_album_page.dart';
 
 class WeatherTimelineApp extends StatefulWidget {
   const WeatherTimelineApp({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class WeatherTimelineApp extends StatefulWidget {
 class _WeatherTimelineAppState extends State<WeatherTimelineApp>
     with SingleTickerProviderStateMixin {
   late AnimationController expandController;
+  int _positionTab = 0;
 
   @override
   void initState() {
@@ -30,14 +32,59 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
       debugShowCheckedModeBanner: false,
       title: 'Weather TimelineTile',
       // builder: Frame.builder,
-      home: FadeTransition(
-        opacity: Tween<double>(
-          begin: 0.0,
-          end: 1.0,
-        ).animate(expandController),
-        child: _WeatherTimeline(),
+      home: Scaffold(
+        body: _buildBody(),
+        bottomNavigationBar: _buildNavigationBar(),
       ),
     );
+  }
+
+  Widget _buildNavigationBar() {
+    return BottomNavigationBar(
+      selectedItemColor: const Color(0xFFf44336),
+      unselectedItemColor: Colors.grey,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.call),
+          label: 'History',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.storage),
+          label: 'TMT Collections',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.storage),
+          label: 'TMT gallery',
+        ),
+      ],
+      onTap: (int value) {
+        setState(() {
+          _positionTab = value;
+        });
+      },
+    );
+  }
+
+  Widget _buildBody() {
+    switch (_positionTab) {
+      case 0:
+        return FadeTransition(
+          opacity: Tween<double>(
+            begin: 0.0,
+            end: 1.0,
+          ).animate(expandController),
+          child: _WeatherTimeline(),
+        );
+      case 1:
+        return FadeTransition(
+          opacity: Tween<double>(
+            begin: 0.0,
+            end: 1.0,
+          ).animate(expandController),
+          child: const TmtAlbumPage(),
+        );
+    }
+    return const SizedBox();
   }
 }
 
@@ -114,7 +161,7 @@ class _WeatherTimeline extends StatelessWidget {
                       'Nắm bắt được nhu cầu bán hàng online ngày càng phát triển. '
                       'TMT bắt đầu phát triển 1 phần mềm để hỗ trợ chốt đơn nhanh chóng cho khách hàng.',
                   onPressed: () {},
-                  paddingTop: 28,
+                  paddingTop: 34,
                 ),
                 _buildTimelineTile(
                   indicator: const _IconIndicator(
