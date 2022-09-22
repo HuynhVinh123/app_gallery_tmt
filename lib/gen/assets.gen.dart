@@ -17,10 +17,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/img.jpeg
   AssetGenImage get img => const AssetGenImage('assets/images/img.jpeg');
 
-  /// File path: assets/images/img_sao_ke.png
-  AssetGenImage get imgSaoKe =>
-      const AssetGenImage('assets/images/img_sao_ke.png');
-
   $AssetsImagesTestGen get test => const $AssetsImagesTestGen();
 }
 

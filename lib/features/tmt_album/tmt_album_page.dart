@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/repository/image_repository_impl.dart';
-import 'tmt_album_detail_page.dart';
+import '../category/category_page.dart';
 
 class TmtAlbumPage extends StatefulWidget {
   const TmtAlbumPage({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _TmtAlbumPageState extends State<TmtAlbumPage> {
   }
 
   void _initData() async {
-    _albums = await _repository.getAlbums();
+    _albums = _repository.getAlbums();
   }
 
   @override
@@ -100,7 +100,7 @@ class _Item extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => TmtAlbumDetailPage(
+            builder: (context) => CategoryPage(
               albumModel: albumModel,
             ),
           ),
@@ -117,8 +117,12 @@ class _Item extends StatelessWidget {
           children: [
             Expanded(
               child: _imageTops(
-                path2: '',
-                path1: '',
+                path2: albumModel.images.length > 1
+                    ? albumModel.images[1].path
+                    : '',
+                path1: albumModel.images.isNotEmpty
+                    ? albumModel.images[0].path
+                    : '',
                 isTop: true,
                 size: double.infinity,
               ),
@@ -128,8 +132,12 @@ class _Item extends StatelessWidget {
             ),
             Expanded(
               child: _imageTops(
-                path2: '',
-                path1: '',
+                path2: albumModel.images.length > 3
+                    ? albumModel.images[3].path
+                    : '',
+                path1: albumModel.images.length > 2
+                    ? albumModel.images[2].path
+                    : '',
                 isTop: false,
                 size: double.infinity,
               ),
@@ -176,7 +184,13 @@ class _Item extends StatelessWidget {
             width: size,
             height: size,
             decoration: BoxDecoration(
-              color: Colors.green,
+              image: path1.isNotEmpty
+                  ? DecorationImage(
+                      image: AssetImage(path1),
+                      fit: BoxFit.fill,
+                    )
+                  : null,
+              color: Colors.grey,
               borderRadius: isTop
                   ? const BorderRadius.only(
                       topLeft: Radius.circular(12),
@@ -195,7 +209,13 @@ class _Item extends StatelessWidget {
             width: size,
             height: size,
             decoration: BoxDecoration(
-              color: Colors.green,
+              image: path2.isNotEmpty
+                  ? DecorationImage(
+                      image: AssetImage(path2),
+                      fit: BoxFit.fill,
+                    )
+                  : null,
+              color: Colors.grey,
               borderRadius: isTop
                   ? const BorderRadius.only(
                       topRight: Radius.circular(12),

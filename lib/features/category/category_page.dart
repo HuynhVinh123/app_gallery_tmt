@@ -2,8 +2,8 @@ import 'package:app_gallery_tmt/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../../data/repository/image_repository_impl.dart';
 import '../../models/image_details.dart';
-import '../media_detail/media_detail_page.dart';
 
 List<ImageDetails> _images = [
   ImageDetails(
@@ -137,15 +137,34 @@ List<ImageDetails> _images = [
 ];
 
 class CategoryPage extends StatefulWidget {
-  const CategoryPage({Key? key, this.title = 'Gallery'}) : super(key: key);
+  const CategoryPage({
+    Key? key,
+    this.title = 'Gallery',
+    this.albumModel,
+  }) : super(key: key);
 
   final String title;
+  final AlbumModel? albumModel;
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  final ImageRepositoryImpl _repository = ImageRepositoryImpl();
+  List<ImageDetails> _images = [];
+  List<ImageModel> _imageModels = [];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.albumModel != null) {
+      _imageModels = _repository.getAlbumById(widget.albumModel!.id).images;
+    } else {
+      _imageModels = _repository.getImages();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,7 +177,10 @@ class _CategoryPageState extends State<CategoryPage> {
   PreferredSizeWidget _buildAppbar() {
     return AppBar(
       backgroundColor: Colors.redAccent,
-      title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.w600,fontSize: 24),),
+      title: Text(
+        widget.title,
+        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+      ),
       centerTitle: true,
       elevation: 0,
     );
@@ -185,32 +207,32 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             child: MasonryGridView.count(
-              physics: const ClampingScrollPhysics(),
-              itemCount: _images.length,
+              // physics: const ClampingScrollPhysics(),
+              itemCount: _imageModels.length,
               crossAxisCount: 2,
               mainAxisSpacing: 4,
               crossAxisSpacing: 4,
               itemBuilder: (context, index) {
                 return RawMaterialButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MediaDetailPage(
-                          imagePath: _images[index].imagePath,
-                          title: _images[index].title,
-                          photographer: _images[index].photographer,
-                          price: _images[index].price,
-                          details: _images[index].details,
-                          index: index,
-                        ),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => MediaDetailPage(
+                    //       imagePath: _images[index].imagePath,
+                    //       title: _images[index].title,
+                    //       photographer: _images[index].photographer,
+                    //       price: _images[index].price,
+                    //       details: _images[index].details,
+                    //       index: index,
+                    //     ),
+                    //   ),
+                    // );
                   },
                   child: Hero(
                     tag: 'logo$index',
                     child: _ImageViewer(
-                      url: _images[index].imagePath,
+                      url: _imageModels[index].path,
                     ),
                   ),
                 );

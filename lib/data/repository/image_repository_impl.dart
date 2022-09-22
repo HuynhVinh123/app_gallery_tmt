@@ -1,4 +1,3 @@
-import 'package:app_gallery_tmt/gen/assets.gen.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_repository_impl.freezed.dart';
@@ -224,15 +223,21 @@ class ImageRepositoryImpl {
     AlbumModel(id: 5, name: 'Quá khứ', tag: 'history'),
   ];
 
-  Future<List<AlbumModel>> getAlbums() async {
-    return albums.toList();
+  List<AlbumModel> getAlbums() {
+    return albums
+        .map((e) => e.copyWith(
+              images: images
+                  .where((element) => element.tag.contains(e.tag))
+                  .toList(),
+            ))
+        .toList();
   }
 
-  Future<List<ImageModel>> getImages() async {
+  List<ImageModel> getImages() {
     return images.toList();
   }
 
-  Future<AlbumModel> getAlbumById(int id) async {
+  AlbumModel getAlbumById(int id) {
     final ab = albums.firstWhere(
       (element) => element.id == id,
     );
