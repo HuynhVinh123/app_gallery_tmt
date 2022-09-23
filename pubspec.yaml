@@ -76,11 +76,14 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/test/
-    - assets/images/history/
-    - assets/images/soccer2022/
     - assets/
-    - assets/images/
+    - assets/history/
+    - assets/socker2022/
+    - assets/teambuilding20221/
+    - assets/trungthu2022/
+    - assets/badminton2022/
+    - assets/image/test/
+
 
   # To add assets to your application, add an assets section, like this:
 
