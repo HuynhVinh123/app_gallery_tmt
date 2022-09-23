@@ -4,8 +4,8 @@ import 'package:photo_view/photo_view_gallery.dart';
 
 import '../../data/repository/image_repository_impl.dart';
 
-class MediaDetailPage extends StatelessWidget {
-  MediaDetailPage({
+class MediaDetailPage extends StatefulWidget {
+  const MediaDetailPage({
     Key? key,
     required this.imagePath,
     required this.index,
@@ -16,8 +16,21 @@ class MediaDetailPage extends StatelessWidget {
   final int index;
   final List<ImageModel> imageModels;
 
+  @override
+  State<MediaDetailPage> createState() => _MediaDetailPageState();
+}
+
+class _MediaDetailPageState extends State<MediaDetailPage> {
   final PhotoViewScaleStateController _scaleStateController =
       PhotoViewScaleStateController();
+
+  late final PageController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = PageController(initialPage: widget.index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +54,12 @@ class MediaDetailPage extends StatelessWidget {
             return PhotoViewGalleryPageOptions(
               scaleStateController: _scaleStateController,
               filterQuality: FilterQuality.high,
-              imageProvider: AssetImage(imageModels[index].path),
+              imageProvider: AssetImage(widget.imageModels[index].path),
               initialScale: PhotoViewComputedScale.contained,
               heroAttributes: PhotoViewHeroAttributes(tag: 'logo$index'),
             );
           },
-          itemCount: imageModels.length,
+          itemCount: widget.imageModels.length,
           loadingBuilder: (BuildContext context, ImageChunkEvent? event) =>
               Center(
             child: SizedBox(
@@ -58,6 +71,7 @@ class MediaDetailPage extends StatelessWidget {
             ),
           ),
           onPageChanged: (int value) {},
+          pageController: _scrollController,
         ),
       ),
     );

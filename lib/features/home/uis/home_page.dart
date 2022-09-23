@@ -44,16 +44,16 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
       unselectedItemColor: Colors.grey,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.history),
-          label: 'Công ty',
+          icon: Icon(Icons.image),
+          label: 'Hình ảnh',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.folder_copy_outlined),
           label: 'Album',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.image),
-          label: 'Hình ảnh',
+          icon: Icon(Icons.history),
+          label: 'Công ty',
         ),
       ],
       onTap: (int value) {
@@ -72,7 +72,7 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
             begin: 0.0,
             end: 1.0,
           ).animate(expandController),
-          child: const HistoryPage(),
+          child: const CategoryPage(),
         );
       case 1:
         return FadeTransition(
@@ -88,7 +88,7 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
             begin: 0.0,
             end: 1.0,
           ).animate(expandController),
-          child: const CategoryPage(),
+          child: const HistoryPage(),
         );
     }
     return const SizedBox();

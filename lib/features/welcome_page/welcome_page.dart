@@ -30,87 +30,85 @@ class _WelcomePageState extends State<WelcomePage>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          fit: StackFit.passthrough,
-          children: [
-            Positioned(
-              top: 10,
-              right: 10,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const WeatherTimelineApp(),
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: 150,
-                  child: Image.asset('assets/images/birthday_cake.png'),
-                ),
-              ),
-            ),
-            Positioned(
-              top: -35,
-              left: 10,
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.passthrough,
+        children: [
+          Positioned(
+            top: 10,
+            right: 10,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WeatherTimelineApp(),
+                  ),
+                );
+              },
               child: SizedBox(
                 width: 150,
-                child: Lottie.asset('assets/animations/85872-party-ball.json'),
+                child: Image.asset('assets/images/birthday_cake.png'),
               ),
             ),
-            Positioned(
-              top: -35,
-              left: 10,
+          ),
+          Positioned(
+            top: -35,
+            left: 10,
+            child: SizedBox(
+              width: 150,
+              child: Lottie.asset('assets/animations/85872-party-ball.json'),
+            ),
+          ),
+          Positioned(
+            top: -35,
+            left: 10,
+            child: SizedBox(
+              width: 150,
+              child: Lottie.asset(
+                  'assets/animations/80557-reward-light-effect.json'),
+            ),
+          ),
+          Positioned(
+            top: -70,
+            right: -50,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WeatherTimelineApp(),
+                  ),
+                );
+              },
+              child: SizedBox(
+                width: 300,
+                child: Lottie.asset(
+                    'assets/animations/68064-success-celebration.json'),
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
               child: SizedBox(
                 width: 150,
-                child: Lottie.asset(
-                    'assets/animations/80557-reward-light-effect.json'),
+                child:
+                    Lottie.asset('assets/animations/19713-six-pack-beer.json'),
               ),
             ),
-            Positioned(
-              top: -70,
-              right: -50,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const WeatherTimelineApp(),
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: 300,
-                  child: Lottie.asset(
-                      'assets/animations/68064-success-celebration.json'),
-                ),
-              ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Lottie.asset(
+                  'assets/animations/17272-cheers-st-patricks-day.json'),
             ),
-            Positioned.fill(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  width: 150,
-                  child: Lottie.asset(
-                      'assets/animations/19713-six-pack-beer.json'),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Lottie.asset(
-                    'assets/animations/17272-cheers-st-patricks-day.json'),
-              ),
-            ),
-            _buildBody(),
-          ],
-        ),
+          ),
+          _buildBody(),
+        ],
       ),
     );
   }
