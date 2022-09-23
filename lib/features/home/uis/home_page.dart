@@ -45,15 +45,15 @@ class _WeatherTimelineAppState extends State<WeatherTimelineApp>
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.history),
-          label: 'History',
+          label: 'Công ty',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.folder_copy_outlined),
-          label: 'TMT Collections',
+          label: 'Album',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.image),
-          label: 'TMT gallery',
+          label: 'Hình ảnh',
         ),
       ],
       onTap: (int value) {
