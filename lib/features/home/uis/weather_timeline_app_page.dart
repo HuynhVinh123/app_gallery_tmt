@@ -98,7 +98,7 @@ class WeatherTimeline extends StatelessWidget {
                     iconData: WeatherIcons.day_fog,
                     size: 20,
                   ),
-                  hour: '2020',
+                  hour: '2021',
                   weather:
                       'Bứt phá vượt trội với nhiều sản phẩm công nghệ và đạt giải Sao Khuê',
                   temperature: '',

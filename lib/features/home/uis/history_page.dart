@@ -72,7 +72,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 );
               },
               title: const Text(
-                'Quá trính phát triền',
+                'Quá trình phát triền',
                 style: TextStyle(
                   color: Color(0xFF303030),
                   fontSize: 16,

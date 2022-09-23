@@ -1,145 +1,15 @@
-import 'package:app_gallery_tmt/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/repository/image_repository_impl.dart';
 import '../../models/image_details.dart';
-
-List<ImageDetails> _images = [
-  ImageDetails(
-    imagePath: Assets.images.test.a1.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New Year',
-    details:
-        'This image was taken during a party in New York on new years eve. Quite a colorful shot.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a2.path,
-    price: '\$10.00',
-    photographer: 'Huu Duong',
-    title: 'Spring',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a3.path,
-    price: '\$30.00',
-    photographer: 'Huu Duong',
-    title: 'Casual Look',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a4.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a5.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a6.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a7.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a8.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a9.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a10.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a11.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a12.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a13.path,
-    price: '\$20.00',
-    photographer: 'Huu Duong',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a14.path,
-    price: '\$20.00',
-    photographer: 'Matthew',
-    title: 'Cone Ice Cream',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a15.path,
-    price: '\$25.00',
-    photographer: 'Martin Sawyer',
-    title: 'Pink Ice Cream',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: Assets.images.test.a16.path,
-    price: '\$15.00',
-    photographer: 'John Doe',
-    title: 'Strawberry Ice Cream',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-];
+import '../media_detail/media_detail_page.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({
     Key? key,
-    this.title = 'Gallery',
+    this.title = 'TMT Gallery',
     this.albumModel,
   }) : super(key: key);
 
@@ -179,7 +49,9 @@ class _CategoryPageState extends State<CategoryPage> {
       backgroundColor: Colors.redAccent,
       title: Text(
         widget.title,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+        style: GoogleFonts.jua(
+          color: Colors.white,
+        ),
       ),
       centerTitle: true,
       elevation: 0,
@@ -215,19 +87,15 @@ class _CategoryPageState extends State<CategoryPage> {
               itemBuilder: (context, index) {
                 return RawMaterialButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => MediaDetailPage(
-                    //       imagePath: _images[index].imagePath,
-                    //       title: _images[index].title,
-                    //       photographer: _images[index].photographer,
-                    //       price: _images[index].price,
-                    //       details: _images[index].details,
-                    //       index: index,
-                    //     ),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MediaDetailPage(
+                          imagePath: _imageModels[index].path,
+                          index: index,
+                        ),
+                      ),
+                    );
                   },
                   child: Hero(
                     tag: 'logo$index',
