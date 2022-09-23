@@ -93,6 +93,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         builder: (context) => MediaDetailPage(
                           imagePath: _imageModels[index].path,
                           index: index,
+                          imageModels: _imageModels,
                         ),
                       ),
                     );
