@@ -4,6 +4,26 @@ part 'image_repository_impl.freezed.dart';
 
 class ImageRepositoryImpl {
   final List<ImageModel> images = const [
+    ImageModel(
+        path:
+            "assets/history/a13680329_1215375331820362_5779583527956328207_o.jpeg",
+        tag: 'history'),
+    ImageModel(
+        path:
+            "assets/history/a13698214_1215369968487565_6974785338422712088_o.jpeg",
+        tag: 'history'),
+    ImageModel(
+        path:
+            "assets/history/a13717376_1215372975153931_1409804080853698262_o.jpeg",
+        tag: 'history'),
+    ImageModel(
+        path:
+            "assets/history/a13754232_1215400341817861_5101817553401658424_n.jpeg",
+        tag: 'history'),
+    ImageModel(
+        path:
+            "assets/history/a13767349_1215385375152691_5921841577292035681_o.jpeg",
+        tag: 'history'),
     ImageModel(path: "assets/history/a20160130_180305.jpg", tag: 'history'),
     ImageModel(path: "assets/history/a20160130_181911.jpg", tag: 'history'),
     ImageModel(path: "assets/history/a20160130_200229.jpg", tag: 'history'),
@@ -115,8 +135,7 @@ class ImageRepositoryImpl {
     ImageModel(path: "assets/history/aMAY00944.jpg", tag: 'history'),
     ImageModel(path: "assets/history/aMAY00949.jpg", tag: 'history'),
     ImageModel(path: "assets/history/aMAY00962.jpg", tag: 'history'),
-    ImageModel(
-        path: "assets/images/history/a20160716_184043.jpg", tag: 'history'),
+    ImageModel(path: "assets/history/a_MG_5109.jpeg", tag: 'history'),
     ImageModel(path: "assets/images/soccer2022/1.CR2.jpg", tag: 'soccer2022'),
     ImageModel(
         path: "assets/images/soccer2022/IMGa5605.CR2.jpg", tag: 'soccer2022'),
