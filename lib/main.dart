@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'features/welcome_page/welcome_page.dart';
+
 void main() {
   runApp(const MyApp());
 }

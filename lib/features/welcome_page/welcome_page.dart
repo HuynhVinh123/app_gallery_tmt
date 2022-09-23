@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../home/uis/home_page.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
@@ -36,9 +38,19 @@ class _WelcomePageState extends State<WelcomePage>
             Positioned(
               top: 10,
               right: 10,
-              child: SizedBox(
-                width: 150,
-                child: Image.asset('assets/images/birthday_cake.png'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const WeatherTimelineApp(),
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  width: 150,
+                  child: Image.asset('assets/images/birthday_cake.png'),
+                ),
               ),
             ),
             Positioned(
@@ -61,10 +73,20 @@ class _WelcomePageState extends State<WelcomePage>
             Positioned(
               top: -70,
               right: -50,
-              child: SizedBox(
-                width: 300,
-                child: Lottie.asset(
-                    'assets/animations/68064-success-celebration.json'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const WeatherTimelineApp(),
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  width: 300,
+                  child: Lottie.asset(
+                      'assets/animations/68064-success-celebration.json'),
+                ),
               ),
             ),
             Positioned.fill(
