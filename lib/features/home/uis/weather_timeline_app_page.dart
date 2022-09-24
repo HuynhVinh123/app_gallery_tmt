@@ -107,6 +107,19 @@ class WeatherTimeline extends StatelessWidget {
                   onPressed: () {},
                   paddingTop: 40,
                 ),
+                _buildTimelineTile(
+                  indicator: const _IconIndicator(
+                    iconData: WeatherIcons.day_fog,
+                    size: 20,
+                  ),
+                  hour: '2022',
+                  weather: 'Bứt phá thành công',
+                  temperature: '',
+                  phrase:
+                      'Sau những thành công của các sản mà TMT tạo ra. TMT đang nỗ lực để tạo ra các sản phẩm mới. ',
+                  onPressed: () {},
+                  paddingTop: 12,
+                ),
                 const SizedBox(
                   height: 12,
                 ),
