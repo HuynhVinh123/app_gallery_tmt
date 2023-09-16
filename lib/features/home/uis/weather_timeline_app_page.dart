@@ -21,8 +21,8 @@ class WeatherTimeline extends StatelessWidget {
       ),
       child: Theme(
         data: Theme.of(context).copyWith(
-          accentColor: const Color(0xFFDB84B1).withOpacity(0.2),
-        ),
+            // accentColor: const Color(0xFFDB84B1).withOpacity(0.2),
+            ),
         child: SafeArea(
           child: Scaffold(
             backgroundColor: Colors.transparent,
